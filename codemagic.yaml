@@ -1,0 +1,22 @@
+workflows:
+  bestieai-android:
+    name: BestieAI APK Build
+    max_build_duration: 20
+    environment:
+      flutter: stable
+      vars:
+        PACKAGE_NAME: "com.bestie.ai"
+    scripts:
+      - name: Clean & get dependencies
+        script: |
+          flutter clean
+          flutter pub get
+      - name: Build APK
+        script: |
+          flutter build apk --release
+    artifacts:
+      - build/app/outputs/flutter-apk/app-release.apk
+    publishing:
+      email:
+        recipients:
+          - hazratali.0007860@gmail.com
